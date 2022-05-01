@@ -1,0 +1,48 @@
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    background: linear-gradient(to bottom, #fceabb, #f8b500);
+    font-family: Montserrat, sans-serif;
+    max-width: 1024px;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+h2
+{
+    color: #19547b;
+    text-decoration: underline;
+    text-decoration-color: #19547b;
+}
+h4
+{
+    color: #19547b;
+}
+
+main
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+nav
+{
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.cocktail
+{
+    margin-bottom: 3rem;
+    width: 16rem;
+}
+.cocktail .card-text
+{
+    font-size: 90%;
+    text-align: justify;
+}
