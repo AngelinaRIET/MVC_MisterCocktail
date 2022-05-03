@@ -9,5 +9,6 @@ connexionMySQL();
 // Récupération du cocktail stocké en base de données
 $result = getOneCocktailById($_GET['id']);
 
+$ingredients = getIngredientsByCocktail($_GET['id']);
 // Chargement du template
 include 'templates/details_cocktail.phtml';
