@@ -38,6 +38,29 @@ INSERT INTO `Cocktail` (`id`, `nom`, `description`, `urlPhoto`, `dateConception`
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `Cocktail_Ingredient`
+--
+
+CREATE TABLE `Cocktail_Ingredient` (
+  `id` int(11) NOT NULL,
+  `idCocktail` int(11) NOT NULL,
+  `idIngredient` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `Cocktail_Ingredient`
+--
+
+INSERT INTO `Cocktail_Ingredient` (`id`, `idCocktail`, `idIngredient`) VALUES
+(1, 1, 1),
+(2, 1, 6),
+(3, 8, 5),
+(4, 6, 6),
+(5, 6, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `Famille`
 --
 
@@ -61,6 +84,27 @@ INSERT INTO `Famille` (`id`, `nomFamille`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `Ingredient`
+--
+
+CREATE TABLE `Ingredient` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `Ingredient`
+--
+
+INSERT INTO `Ingredient` (`id`, `nom`) VALUES
+(1, 'Aperol'),
+(2, 'Citron'),
+(3, 'Sucre'),
+(4, 'Menthe'),
+(5, 'Cointreau'),
+(6, 'Orange');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -72,9 +116,23 @@ ALTER TABLE `Cocktail`
   ADD KEY `idFamille` (`idFamille`);
 
 --
+-- Index pour la table `Cocktail_Ingredient`
+--
+ALTER TABLE `Cocktail_Ingredient`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idCocktail` (`idCocktail`),
+  ADD KEY `idIngredient` (`idIngredient`);
+
+--
 -- Index pour la table `Famille`
 --
 ALTER TABLE `Famille`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `Ingredient`
+--
+ALTER TABLE `Ingredient`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -88,9 +146,21 @@ ALTER TABLE `Cocktail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT pour la table `Cocktail_Ingredient`
+--
+ALTER TABLE `Cocktail_Ingredient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT pour la table `Famille`
 --
 ALTER TABLE `Famille`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `Ingredient`
+--
+ALTER TABLE `Ingredient`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
@@ -102,3 +172,11 @@ ALTER TABLE `Famille`
 --
 ALTER TABLE `Cocktail`
   ADD CONSTRAINT `cocktail_ibfk_1` FOREIGN KEY (`idFamille`) REFERENCES `Famille` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `Cocktail_Ingredient`
+--
+ALTER TABLE `Cocktail_Ingredient`
+  ADD CONSTRAINT `cocktail_ingredient_ibfk_1` FOREIGN KEY (`idCocktail`) REFERENCES `Cocktail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cocktail_ingredient_ibfk_2` FOREIGN KEY (`idIngredient`) REFERENCES `Ingredient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
