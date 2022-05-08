@@ -179,4 +179,3 @@ ALTER TABLE `Cocktail`
 ALTER TABLE `Cocktail_Ingredient`
   ADD CONSTRAINT `cocktail_ingredient_ibfk_1` FOREIGN KEY (`idCocktail`) REFERENCES `Cocktail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cocktail_ingredient_ibfk_2` FOREIGN KEY (`idIngredient`) REFERENCES `Ingredient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
