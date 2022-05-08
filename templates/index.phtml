@@ -9,18 +9,13 @@
     <link rel="stylesheet" href="www/css/cocktails.css">
 </head>
 <body class="container-fluid">
-    <nav>
-        <a href="index.php">Accueil</a>
-        <a href="ajouter_cocktail.php">Ajouter</a>
-        <a href="back_office.php">Back Office</a>
-        <h1>Mister Cocktail</h1>
-    </nav>
+    <?php include 'menu.php'; ?>
 
     <main>
         <!-- Listing de tous les cocktails -->
         <?php foreach($listCocktail as $row){ ?>
             <div class="card shadow-sm cocktail">
-                <a  href="details_cocktail.php?id=<?php echo $row['id']; ?>">
+                <a href="details_cocktail.php?id=<?php echo $row['id']; ?>">
                     <img class="img-fluid" src="www/images/cocktails/<?php echo $row['urlPhoto']; ?>">
                 </a>
             <div class="card-body">
